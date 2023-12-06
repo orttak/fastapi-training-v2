@@ -1,5 +1,5 @@
 # pull official base image
-FROM python:3.10.4-alpine
+FROM python:3.9.4-alpine
 
 # set work directory
 WORKDIR /usr/src
@@ -9,9 +9,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # copy requirements file
-# COPY ./requirements.txt /usr/src/app/requirements.txt
-# copy project
-COPY requirements.txt /usr/src/
+COPY ./requirements.txt /usr/src/app/requirements.txt
 
 # install dependencies
 RUN set -eux \
@@ -19,6 +17,7 @@ RUN set -eux \
         libressl-dev libffi-dev gcc musl-dev python3-dev \
         postgresql-dev bash \
     && pip install --upgrade pip setuptools wheel \
-    && pip install -r /usr/src/requirements.txt \
+    && pip install -r /usr/src/app/requirements.txt \
     && rm -rf /root/.cache/pip
 
+COPY . /usr/src/

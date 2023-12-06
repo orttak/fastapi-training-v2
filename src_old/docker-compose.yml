@@ -6,7 +6,7 @@ volumes:
 services:
   db:
     image: kartoza/postgis:15-3.3
-    container_name: fastapi-training-db
+    container_name: fastapi-training
     volumes:
       - fastapi-training-db-data:/var/lib/postgresql
     ports:
@@ -19,12 +19,3 @@ services:
     restart: on-failure
     healthcheck:
       test: "PGPASSWORD=${POSTGRES_PASS} pg_isready -h 127.0.0.1 -U ${POSTGRES_USER} -d ${POSTGRES_DB}"
-  api:
-    container_name: fastapi-training-api
-    build: ./src
-    command: |
-      bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000'
-    volumes:
-      - ./src/:/usr/src/
-    ports:
-      - 8002:8000
