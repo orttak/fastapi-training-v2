@@ -10,13 +10,14 @@ jobs:
   jobs1:
     environment: testing
     env:
-      database_hostname: localhost
-      database_port: ${{ secrets.DATABASE_PORT}}
-      database_name: ${{ secrets.DATABASE_NAME}}
-      database_password: ${{ secrets.DATABASE_PASSWORD}}
-      database_username: ${{ secrets.DATABASE_USERNAME}}
-      algorithm: ${{ secrets.ALGORITHM}}
-      access_token_expire_minutes: ${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES}}
+      DATABASE_HOSTNAME: ${{secrets.DATABASE_HOSTNAME}}
+      DATABASE_PORT: ${{secrets.DATABASE_PORT}}
+      DATABASE_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
+      DATABASE_NAME: ${{secrets.DATABASE_NAME}}
+      DATABASE_USERNAME: ${{secrets.DATABASE_USERNAME}}
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
+      ALGORITHM: ${{secrets.ALGORITHM}}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}}
     services:
       postgres:
         image: postgres:13.2
