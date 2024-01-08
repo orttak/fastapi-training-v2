@@ -1,8 +1,8 @@
-"""passback_data was added to geotarget
+"""create post table
 
-Revision ID: 9b3b00e23c8d
+Revision ID: 769c57010bb4
 Revises: 
-Create Date: 2021-12-30 12:45:32.195365
+Create Date: 2023-12-07 10:12:16.085429
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9b3b00e23c8d'
+revision = '769c57010bb4'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -24,6 +24,7 @@ def upgrade():
     sa.Column('password', sa.String(), nullable=False),
     sa.Column('created_at', sa.TIMESTAMP(timezone=True), server_default=sa.text('now()'), nullable=False),
     sa.Column('phone_number', sa.String(), nullable=True),
+    sa.Column('is_active', sa.Boolean(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )

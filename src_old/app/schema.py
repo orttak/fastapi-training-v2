@@ -1,3 +1,4 @@
+from typing_extensions import Annotated
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
 from typing import Optional
@@ -67,4 +68,4 @@ class TokenData(BaseModel):
 
 class Vote(BaseModel):
     post_id: int
-    dir: conint(le=1)
+    dir: conint(strict=True, le=1)

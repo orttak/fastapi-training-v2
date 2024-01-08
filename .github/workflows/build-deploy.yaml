@@ -1,0 +1,16 @@
+name: Build and Deploy Code
+on:
+  push:
+    branches:
+      - master
+#   pull_request:
+#     branches:
+#       - "test_branch"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout # we find in the action marketplace
+          uses: actions/checkout@v2
+        - name: we can define spesific linux command
+          run: echo "Hello github action"

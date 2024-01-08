@@ -12,11 +12,13 @@ from sqlalchemy import (
     Boolean,
     TIMESTAMP,
     ForeignKey,
-    )
-#ALEMBIC command
+)
+# ALEMBIC command
 # After changing models
-# alembic revision --autogenerate -m "what you've changed"" 
+# alembic revision --autogenerate -m "what you've changed""
 # alembic upgrade head
+
+
 class User(Base):
     __tablename__ = "users"
     id = Column(Integer, primary_key=True, nullable=False)
@@ -24,8 +26,10 @@ class User(Base):
     password = Column(String, nullable=False)
     created_at = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
-    phone_number=Column(String,nullable=True)
-    is_active=Column(Boolean,nullable=False,default=True)
+    phone_number = Column(String, nullable=True)
+    is_active = Column(Boolean, nullable=False, default=True)
+
+
 class Post(Base):
     __tablename__ = "posts"
 
@@ -36,11 +40,15 @@ class Post(Base):
     rating = Column(String, nullable=True)
     created_at = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
-    owner_id = Column(Integer, ForeignKey('users.id',ondelete='CASCADE'),nullable=False )
-    #with this relationship we can access the user who created the post
-    owner=relationship("User")
+    owner_id = Column(Integer, ForeignKey(
+        'users.id', ondelete='CASCADE'), nullable=False)
+    # with this relationship we can access the user who created the post
+    owner = relationship("User")
+
 
 class Vote(Base):
     __tablename__ = "votes"
-    user_id = Column(Integer, ForeignKey('users.id',ondelete='CASCADE'),nullable=False, primary_key=True)
-    post_id=Column(Integer, ForeignKey('posts.id',ondelete='CASCADE'),nullable=False, primary_key=True)
+    user_id = Column(Integer, ForeignKey(
+        'users.id', ondelete='CASCADE'), nullable=False, primary_key=True)
+    post_id = Column(Integer, ForeignKey(
+        'posts.id', ondelete='CASCADE'), nullable=False, primary_key=True)

@@ -28,3 +28,7 @@ models.py da yapialn degisiklik DB ye yansidigi anda alembic revision --autogene
 
 models.Base.metadata.create_all(bind=engine)
 Bu kodu main.py da yazdigimizda DB ye direk models.py da olan degisiklikler yansir. tutorial kapsaminda alembic olmadan basladigimiz icin bu script bizim icin onemli ama normalde kaldirabiliriz. Bir projeye baslarken direk alembic kismini initialize edip, migration file olusturup, DB ye yansitmak daha mantikli olur. yada olabilir
+
+## TESTING
+
+If we create our test scnerio in dev db, object which is created by ptest will be in dev db. So we need to create test db and test object will be in test db. Whenever we run test, test db will be created and after test db will be deleted.
