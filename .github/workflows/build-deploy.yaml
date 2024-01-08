@@ -10,7 +10,7 @@ jobs:
   jobs1:
     environment: testing
     env:
-      database_hostname: ${{ secrets.DATABASE_HOSTNAME}}
+      database_hostname: localhost
       database_port: ${{ secrets.DATABASE_PORT}}
       database_name: ${{ secrets.DATABASE_NAME}}
       database_password: ${{ secrets.DATABASE_PASSWORD}}
