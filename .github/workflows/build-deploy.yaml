@@ -52,5 +52,5 @@ jobs:
           password: ${{secrets.TOKEN_ACCESS_GIT}}
       - name: "Build Inventory Image"
         run: |
-          docker build . --tag ghcr.io/${{github.actor}}/apiTest:latest
+          docker build ./src/. --tag ghcr.io/${{github.actor}}/apiTest:latest
           docker push ghcr.io/${{github.actor}}/apiTest:latest
