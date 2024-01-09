@@ -7,7 +7,7 @@ on:
 #     branches:
 #       - "test_branch"
 jobs:
-  jobs1:
+  testApi:
     environment: testing
     env:
       DATABASE_HOSTNAME: "localhost"
@@ -44,3 +44,13 @@ jobs:
         run: |
           pip install pytest
           pytest  -v ./src/tests || exit 1
+      - name: "Login to GitHub Container Registry"
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{github.actor}}
+          password: ${{secrets.TOKEN_ACCESS_GIT}}
+      - name: "Build Inventory Image"
+        run: |
+          docker build . --tag ghcr.io/${{github.actor}}/apiTest:latest
+          docker push ghcr.io/${{github.actor}}/apiTest:latest
