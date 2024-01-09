@@ -48,14 +48,14 @@ jobs:
           DATABASE_HOSTNAME: "${{secrets.DATABASE_HOSTNAME}}"
           DATABASE_PORT: "${{secrets.DATABASE_PORT}}"
           DATABASE_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
-          DATABASE_NAME: "${{secrets.DATABASE_NAME}}"
+          DATABASE_NAME: "${{secrets.DATABASE_NAME}}_test"
           DATABASE_USERNAME: "${{secrets.DATABASE_USERNAME}}"
           SECRET_KEY: "${{ secrets.SECRET_KEY }}"
           ALGORITHM: "${{ secrets.ALGORITHM }}"
           ACCESS_TOKEN_EXPIRE_MINUTES: ${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
           POSTGRES_USER: "${{ secrets.POSTGRES_USER }}"
           POSTGRES_PASSWORD: "${{ secrets.POSTGRES_PASS }}"
-          POSTGRES_DB: "${{ secrets.POSTGRES_DB }}"
+          POSTGRES_DB: "${{ secrets.POSTGRES_DB}}_test"
           POSTGRES_PORT: "${{ secrets.POSTGRES_PORT }}"
 
       - name: Build and run containers
