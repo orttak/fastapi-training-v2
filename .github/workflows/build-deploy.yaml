@@ -43,4 +43,4 @@ jobs:
       - name: Run tests
         run: |
           pip install pytest
-          pytest  -v ./src/tests
+          pytest  -v ./src/tests || exit 1
