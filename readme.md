@@ -7,8 +7,3 @@ uvicorn main:app --reload
 login github docker registry
 docker login --username orttak --password github_classic_token ghcr.io
 soru: endpointlere direk login yok. once login olup oradan token alip hayatimiza oyle devam ediyoruz
-
-- development icin plan yapalim
-- dosya yapilarini olusturalim
-- bunlarin cizimini yapalim
--

@@ -17,7 +17,7 @@ soru: endpointlere direk login yok. once login olup oradan token alip hayatimiza
 we have upgrade and downgrade functions in migration file. it is like git commit.
 4- after that we define upgrade and downgrade functions in migration file.
 5- alembic upgrade revisionID # run migration file
-6- alembci currten # show current revision. if you create new revision file and do not apply it with upgrade you can alembic upgaade head and latest changes apply to database.
+6- alembci currten # show current revision. if you create new revision file and do not apply it with upgrade you can alembic upgrade head and latest changes apply to database.
 7- if you also define downgrade function in migration file you can downgrade your database with alembic downgrade revisionID. if you do not define downgrade function you can not downgrade your database.
 
 Alembic sifirdan baslamaya gerek yok. Current DB de olanlari alip migration file olusturabiliriz. Bunun icin: alembic revision --autogenerate -m "create post table"
@@ -32,3 +32,11 @@ Bu kodu main.py da yazdigimizda DB ye direk models.py da olan degisiklikler yans
 ## TESTING
 
 If we create our test scnerio in dev db, object which is created by ptest will be in dev db. So we need to create test db and test object will be in test db. Whenever we run test, test db will be created and after test db will be deleted.
+
+## Publish Docker in Github
+
+docker login --username orttak --password XXX ghcr.io
+docker image ls
+docker -t ligfinder_refactor_api:latest ghcr.io/orttak/apitest:fromlocal
+docker tag ligfinder_refactor_api:latest ghcr.io/orttak/apitest:fromlocal
+docker push ghcr.io/orttak/apitest:fromlocal
